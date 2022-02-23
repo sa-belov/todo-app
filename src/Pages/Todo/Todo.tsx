@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Button from '../../shared/ui-kit/Button/Button';
 import CreateTodoModal from '../../shared/ui-kit/Modal/CreateTodoModal/CreateTodoModal';
 import TodoTable from './TodoTable/TodoTable';
-import TodoState from './todo.state';
 import styles from './Todo.module.sass';
 
 const Todo = () => {
@@ -13,7 +12,7 @@ const Todo = () => {
       <Button styleType={'primary'} onClick={() => setCreateTodoModal(true)}>
         Add todo
       </Button>
-      <TodoTable items={TodoState.getList()} />
+      <TodoTable />
       {createTodoModal && <CreateTodoModal onClose={() => setCreateTodoModal(false)} />}
     </div>
   );

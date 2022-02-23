@@ -31,12 +31,9 @@ class TodoState {
     this.todoList[index] = updated;
   }
 
-  delete(id: ITodoItem['id']) {
-    const index = this.todoList.findIndex((it) => it.id === id);
-    if (index === -1) return;
-
-    this.todoList.splice(index, 1);
-  }
+  delete = (id: ITodoItem['id']) => {
+    this.todoList = this.todoList.filter((it) => it.id !== id);
+  };
 }
 
 export default new TodoState();
