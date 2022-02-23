@@ -7,8 +7,7 @@
   flex-direction: column
   gap: 20px
 
-.item
-  background: $green
+.item, .red
   border-radius: 5px
   padding: 15px
   cursor: pointer
@@ -17,14 +16,15 @@
   flex-direction: column
   align-items: flex-start
   justify-content: flex-start
+  gap: 10px
 
 .red
   background: $red
-  border-radius: 5px
-  padding: 15px
-  cursor: pointer
-  max-width: 200px
-  width: max-content
+
+.item
+  background: $green
+
+.buttons
   display: flex
-  align-items: center
-  justify-content: center
+  flex-direction: row
+  gap: 10px

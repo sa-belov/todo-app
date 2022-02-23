@@ -2,8 +2,9 @@ import TodoState, { ITodoItem } from '../todo.state';
 import { FunctionComponent } from 'react';
 import styles from './TodoTable.module.sass';
 import Button from '../../../shared/ui-kit/Button/Button';
+import { observer } from 'mobx-react';
 
-const TodoTable: FunctionComponent = () => {
+const TodoTable: FunctionComponent = observer(() => {
   const items = TodoState.getList();
   const renderTodos = () => {
     return items.map((item) => (
@@ -13,14 +14,18 @@ const TodoTable: FunctionComponent = () => {
           <Button styleType={'primary'} onClick={() => TodoState.delete(item.id)}>
             Delete
           </Button>
-          <Button styleType={'primary'} onClick={() => TodoState.update(item)}>
-            Resolve
-          </Button>
+          {item.resolved ? (
+            <></>
+          ) : (
+            <Button styleType={'primary'} onClick={() => TodoState.update({ ...item, resolved: true })}>
+              Resolve
+            </Button>
+          )}
         </div>
       </div>
     ));
   };
   return <div className={styles.container}>{renderTodos()}</div>;
-};
+});
 
 export default TodoTable;
